@@ -361,7 +361,7 @@
   }
   .checkout-box .row{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px;}
   .checkout-box .row b{color:var(--ink);}
-  .checkout-box .pctline{font-size:13px;font-weight:700;color:var(--green-dark);margin-top:8px;}
+  .checkout-box .pctline{font-size:13px;font-weight:700;color:var(--red);margin-top:8px;}
   .checkout-box .bar{height:7px;background:#fff;border-radius:4px;overflow:hidden;margin-top:6px;}
   .checkout-box .bar i{display:block;height:100%;background:var(--green);}
   .warn-box{
@@ -371,6 +371,38 @@
   .btn-row{display:flex;gap:10px;}
   .btn-row .sheet-btn{flex:1;margin-top:0;}
   .btn-cancel{background:#F2F2F2;color:var(--ink);}
+
+  /* ---------- Fullscreen success screen (after connect) ---------- */
+  .success-screen{
+    position:fixed;inset:0;
+    background:linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%);
+    display:none;
+    align-items:center;justify-content:center;
+    z-index:80;
+    padding:24px;
+    overflow-y:auto;
+  }
+  .success-screen.open{display:flex;}
+  .success-inner{
+    width:100%;max-width:440px;
+    background:#fff;
+    border-radius:20px;
+    padding:28px 20px 24px;
+    text-align:center;
+    animation:slideUp .3s ease;
+  }
+  .success-badge{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--green-light);
+    display:flex;align-items:center;justify-content:center;
+    font-size:28px;margin:0 auto 8px;
+  }
+  .success-icon{font-size:30px;margin-bottom:4px;}
+  .success-inner h2{font-size:18px;font-weight:800;margin-bottom:6px;}
+  .success-inner p{font-size:12.5px;color:var(--gray);line-height:1.5;margin-bottom:16px;}
+  .success-budget{margin:0 0 16px;justify-content:center;flex-wrap:wrap;}
+  .success-modeboxes{display:flex;margin:0 0 4px;}
+  .success-cta{margin-top:18px;}
 
   /* ---------- Toast ---------- */
   .toast{
@@ -384,6 +416,122 @@
     line-height:1.4;
   }
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* ---------- General homepage catalog (always visible) ---------- */
+  .home-cat-wrap{margin:14px 14px 0;}
+  .home-cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+  .home-cat-header h3{font-size:14.5px;font-weight:700;}
+  .home-cat-header span{font-size:11px;color:var(--gray);}
+  .home-cat-scroll{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;}
+  .home-cat-scroll::-webkit-scrollbar{display:none;}
+  .home-card{
+    flex:none;width:118px;background:#fff;border-radius:12px;overflow:hidden;
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+  }
+  .home-card .imgwrap{position:relative;width:100%;aspect-ratio:1/1;background:#f2f2f2;overflow:hidden;}
+  .home-card .imgwrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .home-card .disc-badge{
+    position:absolute;top:5px;right:5px;background:var(--red);color:#fff;
+    font-size:9px;font-weight:700;padding:2px 5px;border-radius:5px;
+  }
+  .home-card .info{padding:7px 8px 9px;}
+  .home-card .name{font-size:10.5px;line-height:1.3;height:27px;overflow:hidden;color:var(--ink);}
+  .home-card .price-now{font-size:12px;font-weight:700;color:var(--ink);margin-top:2px;}
+  .home-card .price-old{font-size:9px;color:var(--gray);text-decoration:line-through;}
+
+  /* ---------- Mode selector boxes (after connect) ---------- */
+  .mode-boxes{display:none;gap:10px;margin:12px 14px 0;}
+  .mode-box{
+    flex:1;background:#fff;border-radius:14px;padding:16px 12px;text-align:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer;border:1.5px solid transparent;
+  }
+  .mode-box:active{border-color:var(--green);}
+  .mode-box .ic{font-size:26px;margin-bottom:6px;}
+  .mode-box h4{font-size:12.5px;font-weight:700;line-height:1.3;}
+  .mode-box p{font-size:10px;color:var(--gray);margin-top:3px;line-height:1.4;}
+
+  /* ---------- Freelancer page ---------- */
+  .fl-page{
+    display:none;position:fixed;inset:0;background:var(--mint);z-index:35;
+    max-width:480px;margin:0 auto;overflow-y:auto;padding-bottom:80px;
+  }
+  .fl-page.open{display:block;}
+  .fl-top{background:var(--green);padding:14px 14px 16px;display:flex;align-items:center;gap:10px;color:#fff;position:sticky;top:0;z-index:2;}
+  .fl-back{background:rgba(255,255,255,.2);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;flex:none;}
+  .fl-top h2{font-size:16px;font-weight:700;}
+  .fl-tabs{display:flex;gap:8px;padding:12px 14px 0;flex-wrap:wrap;}
+  .fl-tab{
+    flex:1;text-align:center;padding:10px 4px;border-radius:10px;background:#EEE;
+    font-size:11.5px;font-weight:700;color:var(--gray);cursor:pointer;min-width:70px;
+  }
+  .fl-tab.active{background:var(--green);color:#fff;}
+  .fl-body{padding:14px;}
+  .fl-add-btn{
+    border:1.5px dashed var(--green);color:var(--green-dark);background:var(--green-light);
+    font-weight:700;font-size:13px;text-align:center;padding:12px;border-radius:12px;
+    cursor:pointer;margin-bottom:14px;
+  }
+  .fl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .fl-pcard{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .fl-pcard .imgwrap{width:100%;aspect-ratio:1/1;background:#EFEFEF;display:flex;align-items:center;justify-content:center;font-size:28px;}
+  .fl-pcard .info{padding:9px 10px 11px;}
+  .fl-pcard .name{font-size:12px;font-weight:700;line-height:1.3;height:31px;overflow:hidden;}
+  .fl-pcard .price{font-size:13px;font-weight:700;color:var(--green-dark);margin:3px 0;}
+  .fl-pcard .meta{font-size:10px;color:var(--gray);display:flex;align-items:center;gap:3px;}
+  .fl-pcard .edit-btn{
+    margin-top:7px;width:100%;background:#F2F2F2;border:none;border-radius:8px;
+    padding:6px 0;font-size:11px;font-weight:700;cursor:pointer;
+  }
+  .fl-order-card{background:#fff;border-radius:14px;padding:14px;margin-bottom:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .fl-order-card .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+  .fl-order-card h4{font-size:13.5px;font-weight:700;line-height:1.35;}
+  .fl-order-card .from{font-size:11px;color:var(--gray);margin-top:3px;}
+  .fl-status{font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;white-space:nowrap;flex:none;}
+  .fl-status.pending{background:#FCE3E3;color:#C22;}
+  .fl-status.progress{background:#FFEFD6;color:#B8720C;}
+  .fl-status.review{background:var(--green-light);color:var(--green-dark);}
+  .fl-chat-btn{margin-top:10px;background:var(--green-light);color:var(--green-dark);border:none;
+    font-size:11.5px;font-weight:700;padding:7px 12px;border-radius:20px;cursor:pointer;}
+  .fl-hist-card{background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.05);
+    display:flex;justify-content:space-between;align-items:center;}
+  .fl-hist-card h4{font-size:13px;font-weight:700;}
+  .fl-hist-card .buyer{font-size:11px;color:var(--gray);margin-top:2px;}
+  .fl-hist-card .stars{font-size:12px;white-space:nowrap;}
+  .fl-notice{background:var(--green);color:#fff;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:12px;line-height:1.5;}
+  .fl-fin-cards{display:flex;gap:10px;margin-bottom:16px;}
+  .fl-fin-card{flex:1;background:#fff;border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .fl-fin-card .lbl{font-size:10.5px;color:var(--gray);font-weight:600;}
+  .fl-fin-card .val{font-size:14px;font-weight:700;margin-top:4px;}
+  .fl-chart-box{background:#fff;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .fl-chart-box h4{font-size:13px;font-weight:700;margin-bottom:12px;}
+  .fl-pie-row{display:flex;align-items:center;gap:16px;}
+  .fl-pie{width:130px;height:130px;border-radius:50%;flex:none;}
+  .fl-legend{flex:1;}
+  .fl-legend .li{display:flex;align-items:center;gap:7px;font-size:11.5px;margin-bottom:8px;}
+  .fl-legend .dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .fl-legend .li b{margin-left:auto;font-size:11.5px;}
+  .fl-bars{display:flex;align-items:flex-end;gap:8px;height:110px;margin-top:6px;}
+  .fl-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+  .fl-bar-col .bar{width:100%;border-radius:5px 5px 0 0;background:var(--green);}
+  .fl-bar-col .lbl{font-size:9.5px;color:var(--gray);margin-top:5px;}
+
+  /* ---------- Product form modal fields reused ---------- */
+  .field-group{margin-bottom:14px;}
+  .field-group label{font-size:12.5px;font-weight:700;display:block;margin-bottom:6px;}
+  .field-group input, .field-group select{
+    width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:13px;
+    font-family:inherit;color:var(--ink);
+  }
+  .upload-box{
+    border:1.5px dashed #C9E9CA;background:var(--green-light);border-radius:12px;
+    text-align:center;padding:20px;font-size:12.5px;color:var(--green-dark);font-weight:700;
+  }
+  .upload-box .em{font-size:26px;display:block;margin-bottom:6px;}
+
+  .lock-notice{
+    background:#FFEAEA;border:1px solid #FFB9B9;border-radius:12px;padding:14px;
+    color:var(--red);font-size:12.5px;font-weight:700;line-height:1.6;margin-bottom:16px;
+  }
 </style>
 </head>
 <body>
@@ -437,9 +585,6 @@
       </button>
     </div>
 
-    <!-- budget summary, shown after active -->
-    <div class="budget-strip" id="budgetStrip" style="display:none;"></div>
-
     <!-- ================= BANNER SLIDER ================= -->
     <div class="banner" id="banner" onclick="goExternal()">
       <img src="" id="slide0">
@@ -449,6 +594,39 @@
         <span class="on"></span><span></span><span></span>
       </div>
       <div class="tap-hint">Ketuk untuk lihat semua →</div>
+    </div>
+
+    <!-- budget summary, shown after active -->
+    <div class="budget-strip" id="budgetStrip" style="display:none;"></div>
+
+    <!-- quick access boxes, shown after connect -->
+    <div class="mode-boxes" id="modeBoxes">
+      <div class="mode-box" onclick="goToBelanjaMode()">
+        <div class="ic">🛍️</div>
+        <h4>Belanja Mode Mahasiswa</h4>
+        <p>Katalog hemat sesuai kantong kamu</p>
+      </div>
+      <div class="mode-box" onclick="openFreelancerFlow()">
+        <div class="ic">💼</div>
+        <h4>Freelancer</h4>
+        <p>Jualan jasa & barang buat cuan tambahan</p>
+      </div>
+    </div>
+
+    <!-- ================= GENERAL HOMEPAGE CATALOG ================= -->
+    <div class="home-cat-wrap">
+      <div class="home-cat-header">
+        <h3>👕 Fashion Pilihan</h3>
+        <span>Lihat semua ›</span>
+      </div>
+      <div class="home-cat-scroll" id="homeFashion"></div>
+    </div>
+    <div class="home-cat-wrap" style="margin-top:16px;">
+      <div class="home-cat-header">
+        <h3>✨ Face Care Terlaris</h3>
+        <span>Lihat semua ›</span>
+      </div>
+      <div class="home-cat-scroll" id="homeFacecare"></div>
     </div>
 
     <!-- ================= QUICK ICONS ================= -->
@@ -513,9 +691,93 @@
     </div>
   </div>
 
+  <!-- ================= FULLSCREEN: MODE MAHASISWA ACTIVATED ================= -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-inner">
+      <div class="success-badge">🎓</div>
+      <div class="success-icon">🎉</div>
+      <h2>Mode Mahasiswa Aktif!</h2>
+      <p>GoPay & Gojek berhasil terhubung. Ini ringkasan budget bulanan kamu:</p>
+
+      <div class="budget-strip success-budget" id="budgetStripSuccess"></div>
+
+      <div class="mode-boxes success-modeboxes" id="modeBoxesSuccess">
+        <div class="mode-box" onclick="goToBelanjaMode(); closeSuccessScreen();">
+          <div class="ic">🛍️</div>
+          <h4>Belanja Mode Mahasiswa</h4>
+          <p>Katalog hemat sesuai kantong kamu</p>
+        </div>
+        <div class="mode-box" onclick="openFreelancerFlow(); closeSuccessScreen();">
+          <div class="ic">💼</div>
+          <h4>Freelancer</h4>
+          <p>Jualan jasa & barang buat cuan tambahan</p>
+        </div>
+      </div>
+
+      <button class="sheet-btn success-cta" onclick="closeSuccessScreen()">Lanjut ke Beranda →</button>
+    </div>
+  </div>
+
   <!-- ================= MODAL: CHECKOUT ================= -->
   <div class="overlay" id="overlayCheckout">
     <div class="sheet" id="checkoutSheetContent"></div>
+  </div>
+
+  <!-- ================= MODAL: FREELANCER VERIFICATION ================= -->
+  <div class="overlay" id="overlayFreelance">
+    <div class="sheet">
+      <div class="handle"></div>
+      <h2>Aktivasi Akun Freelancer</h2>
+      <p class="desc">Kami akan memverifikasi data kamu sebentar supaya profil freelancer siap dipakai buat jualan jasa & barang.</p>
+      <button class="sheet-btn" id="btnFlVerify" onclick="doFreelanceVerify()">
+        <span class="spinner" id="flSpinner"></span>
+        <span id="flVerifyLabel">Mulai Verifikasi</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: TAMBAH PRODUK FREELANCER ================= -->
+  <div class="overlay" id="overlayAddProduct">
+    <div class="sheet">
+      <div class="handle"></div>
+      <h2>Tambah Produk Baru</h2>
+      <div class="field-group">
+        <label>Nama Produk</label>
+        <input id="fpName" type="text" placeholder="Contoh: Sepatu Sneakers Second">
+      </div>
+      <div class="field-group">
+        <label>Foto Produk</label>
+        <div class="upload-box"><span class="em">🖼️</span>Tap untuk upload foto</div>
+      </div>
+      <div class="field-group">
+        <label>Harga (Rp)</label>
+        <input id="fpPrice" type="number" placeholder="Contoh: 75000">
+      </div>
+      <div class="field-group">
+        <label>Kondisi</label>
+        <select id="fpCond">
+          <option>Baru</option>
+          <option>Bekas - Sangat Baik</option>
+          <option>Bekas - Baik</option>
+        </select>
+      </div>
+      <button class="sheet-btn" onclick="submitNewProduct()">Simpan</button>
+    </div>
+  </div>
+
+  <!-- ================= FREELANCER FULL PAGE ================= -->
+  <div class="fl-page" id="flPage">
+    <div class="fl-top">
+      <button class="fl-back" onclick="closeFreelancerPage()">←</button>
+      <h2>Freelancer Mahasiswa</h2>
+    </div>
+    <div class="fl-tabs">
+      <div class="fl-tab active" id="flTabProduk" onclick="flSwitchTab('produk')">Produk Jualan</div>
+      <div class="fl-tab" id="flTabPesanan" onclick="flSwitchTab('pesanan')">Pesanan</div>
+      <div class="fl-tab" id="flTabRiwayat" onclick="flSwitchTab('riwayat')">Riwayat</div>
+      <div class="fl-tab" id="flTabKeuangan" onclick="flSwitchTab('keuangan')">Keuangan</div>
+    </div>
+    <div class="fl-body" id="flBody"></div>
   </div>
 
   <div class="toast" id="toast"></div>
@@ -532,35 +794,39 @@ let studentMode = false;
 let connecting = false;
 
 const BUDGETS = {
-  'uang sandang': 750000,
-  'uang perawatan': 300000,
-  'uang gaya': 200000,
-  'uang kebutuhan kuliah': 2000000,
-  'uang jajan': 400000,
+  'uang saku makanan': 500000,
+  'kebutuhan kos': 350000,
+  'investasi': 200000,
+  'uang jajan': 150000,
+  'kelistrikan': 150000,
+  'paket data': 150000,
+  'cicilan': 200000,
+  'kesehatan': 150000,
+  'hiburan': 150000,
 };
 let budgetRemaining = Object.assign({}, BUDGETS);
 
 /* ============ CATEGORY DEFINITIONS ============ */
 const CATEGORIES = [
-  {id:'pakaian',    name:'Pakaian',          icon:'👕', keyword:'clothing',    budget:'uang sandang',            range:[25000,150000],
+  {id:'pakaian',    name:'Pakaian',          icon:'👕', keyword:'clothing',    budget:'kebutuhan kos',           range:[25000,150000],
     base:['Kaos Polos Oversize','Kemeja Flanel Kotak','Hoodie Basic Fleece','Kaos Oblong Katun Combed','Jaket Bomber Varsity','Celana Cargo Jogger','Kemeja Corduroy','Sweater Rajut Basic','Rok Plisket Mahasiswi','Jaket Denim Vintage']},
-  {id:'bodycare',   name:'Body Care',        icon:'🧴', keyword:'cosmetics',   budget:'uang perawatan',          range:[20000,90000],
+  {id:'bodycare',   name:'Body Care',        icon:'🧴', keyword:'cosmetics',   budget:'kesehatan',               range:[20000,90000],
     base:['Body Lotion Whitening','Sabun Mandi Cair Fresh','Body Scrub Coffee','Deodorant Roll On','Body Mist Sweet','Hand Cream Shea Butter','Sabun Batang Herbal','Body Wash Refreshing','Body Butter Whipped','Parfum Body Spray']},
-  {id:'skincare',   name:'Skincare',         icon:'✨', keyword:'skincare',    budget:'uang perawatan',          range:[15000,120000],
+  {id:'skincare',   name:'Skincare',         icon:'✨', keyword:'skincare',    budget:'kesehatan',               range:[15000,120000],
     base:['Serum Niacinamide 10%','Facial Wash Oil Control','Sunscreen SPF 40 Gel','Toner Centella Asiatica','Moisturizer Gel Cream','Sheet Mask Aloe Vera','Micellar Water','Acne Spot Treatment','Essence Watery','Lip Balm Tinted']},
-  {id:'sepatu',     name:'Sepatu',           icon:'👟', keyword:'sneakers',    budget:'uang sandang',            range:[80000,350000],
+  {id:'sepatu',     name:'Sepatu',           icon:'👟', keyword:'sneakers',    budget:'cicilan',                 range:[80000,350000],
     base:['Sneakers Canvas Basic','Sandal Jepit Casual','Sepatu Slip On Kampus','Sepatu Running Ringan','Sandal Selop Kulit Sintetis','Sneakers Knit Breathable','Sepatu Loafer Formal','Sandal Gunung Outdoor','Sepatu Boots Chukka','Sneakers Chunky Sole']},
-  {id:'tas',        name:'Tas',              icon:'🎒', keyword:'backpack',    budget:'uang sandang',            range:[50000,250000],
+  {id:'tas',        name:'Tas',              icon:'🎒', keyword:'backpack',    budget:'kebutuhan kos',           range:[50000,250000],
     base:['Tas Ransel Kampus','Tote Bag Kanvas','Sling Bag Unisex','Tas Selempang Kulit PU','Pouch Multifungsi','Tas Laptop Waterproof','Drawstring Bag','Tas Pinggang Sporty','Ransel Mini Trendy','Tas Belanja Lipat']},
-  {id:'aksesoris',  name:'Aksesoris',        icon:'⌚', keyword:'watch',       budget:'uang gaya',               range:[15000,100000],
+  {id:'aksesoris',  name:'Aksesoris',        icon:'⌚', keyword:'watch',       budget:'uang jajan',              range:[15000,100000],
     base:['Jam Tangan Digital','Kalung Rantai Simple','Gelang Manik Handmade','Topi Baseball Basic','Kacamata Anti Radiasi','Cincin Stainless Steel','Ikat Pinggang Kulit','Anting Mutiara Imitasi','Case HP Custom','Gantungan Kunci Lucu']},
-  {id:'elektronik', name:'Elektronik',       icon:'🔌', keyword:'electronics', budget:'uang kebutuhan kuliah',   range:[50000,500000],
+  {id:'elektronik', name:'Elektronik',       icon:'🔌', keyword:'electronics', budget:'kelistrikan',             range:[50000,500000],
     base:['Earphone Bluetooth TWS','Powerbank 10000mAh','Kabel Data Fast Charging','Mouse Wireless Silent','Lampu Belajar LED','Speaker Bluetooth Mini','Flashdisk 32GB','Stand Laptop Lipat','Keyboard Mini Portable','Ring Light Selfie']},
-  {id:'alattulis',  name:'Alat Tulis',       icon:'✏️', keyword:'stationery',  budget:'uang kebutuhan kuliah',   range:[5000,60000],
+  {id:'alattulis',  name:'Alat Tulis',       icon:'✏️', keyword:'stationery',  budget:'paket data',              range:[5000,60000],
     base:['Buku Tulis 58 Lembar','Pulpen Gel Set 5pcs','Stabilo Warna Set','Binder Ring Kuliah','Sticky Notes Aesthetic','Pensil Mekanik 0.5','Map Plastik Kancing','Tipe-X Correction Tape','Penggaris Set 3in1','Amplop Coklat Kuliah']},
-  {id:'makanan',    name:'Makanan Ringan',   icon:'🍿', keyword:'snack',       budget:'uang jajan',              range:[8000,35000],
+  {id:'makanan',    name:'Makanan Ringan',   icon:'🍿', keyword:'snack',       budget:'uang saku makanan',       range:[8000,35000],
     base:['Keripik Singkong Pedas','Mie Instan Goreng Pedas','Coklat Batang Import','Kopi Sachet Kekinian','Biskuit Sandwich Coklat','Popcorn Karamel','Basreng Pedas Daun Jeruk','Wafer Cokelat Renyah','Teh Kotak Kekinian','Snack Rumput Laut']},
-  {id:'kuliah',     name:'Peralatan Kuliah', icon:'📚', keyword:'notebook',    budget:'uang kebutuhan kuliah',   range:[10000,150000],
+  {id:'kuliah',     name:'Peralatan Kuliah', icon:'📚', keyword:'notebook',    budget:'investasi',               range:[10000,150000],
     base:['Buku Kuliah A5 Hardcover','Kalkulator Scientific','Map Ring Binder','Tumbler Kuliah 500ml','Totebag Praktikum','Name Tag Almamater','Stopmap Plastik Tebal','Kertas HVS 1 Rim','Highlighter Set Pastel','Buku Agenda Harian']},
 ];
 
@@ -651,6 +917,7 @@ function doConnect(){
     connecting = false;
     activateStudentMode();
     closeConnectModal();
+    showSuccessScreen();
     // reset modal for next time (in case reopened)
     btn.removeAttribute('disabled');
     label.textContent = 'Hubungkan Sekarang';
@@ -676,18 +943,21 @@ function activateStudentMode(){
   document.getElementById('lockedBox').style.display = 'none';
   document.getElementById('catalogWrap').style.display = 'block';
 
+  // show quick-access boxes
+  document.getElementById('modeBoxes').style.display = 'flex';
+
   renderBudgetStrip();
   renderCategoryChips();
   renderProducts(CATEGORIES[0].id);
+}
 
-  toast('🎓 Mode Mahasiswa aktif! Semua harga sudah disortir sesuai budget kuliah kamu.');
+function goToBelanjaMode(){
+  document.getElementById('catalogWrap').scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 /* ============ BUDGET STRIP ============ */
-function renderBudgetStrip(){
-  const el = document.getElementById('budgetStrip');
-  el.style.display = 'flex';
-  el.innerHTML = Object.keys(BUDGETS).map(label=>{
+function budgetChipsHTML(){
+  return Object.keys(BUDGETS).map(label=>{
     const total = BUDGETS[label];
     const remain = budgetRemaining[label];
     const pctLeft = Math.max(0, Math.round(remain/total*100));
@@ -697,6 +967,22 @@ function renderBudgetStrip(){
       <div class="bar"><i style="width:${pctLeft}%"></i></div>
     </div>`;
   }).join('');
+}
+function renderBudgetStrip(){
+  const html = budgetChipsHTML();
+  const el = document.getElementById('budgetStrip');
+  el.style.display = 'flex';
+  el.innerHTML = html;
+  const elSuccess = document.getElementById('budgetStripSuccess');
+  if(elSuccess) elSuccess.innerHTML = html;
+}
+
+/* ============ FULLSCREEN SUCCESS SCREEN ============ */
+function showSuccessScreen(){
+  document.getElementById('successScreen').classList.add('open');
+}
+function closeSuccessScreen(){
+  document.getElementById('successScreen').classList.remove('open');
 }
 
 /* ============ CATEGORY CHIPS ============ */
@@ -784,13 +1070,13 @@ function showBudgetConfirmSheet(p){
       <div class="row"><span>Harga produk</span><b>Rp${fmt(p.price)}</b></div>
       <div class="row"><span>Kategori budget</span><b>${cap(p.budgetLabel)}</b></div>
       <div class="row"><span>Sisa budget saat ini</span><b>Rp${fmt(budgetRemaining[p.budgetLabel])}</b></div>
-      <div class="pctline">Belanja ini akan menghabiskan ${pct}% dari ${cap(p.budgetLabel)} bulanan kamu</div>
+      <div class="pctline">🔴 Belanja ini akan menghabiskan ${pct}% dari kantong ${cap(p.budgetLabel)} kamu</div>
       <div class="bar"><i style="width:${pct}%"></i></div>
     </div>
     ${overBudget ? `<div class="warn-box">⚠️ Budget ${cap(p.budgetLabel)} kamu bulan ini kemungkinan nggak cukup buat item ini. Tetap mau lanjut?</div>` : ``}
     <div class="btn-row">
       <button class="sheet-btn btn-cancel" onclick="closeCheckoutModal()">Batal</button>
-      <button class="sheet-btn" onclick="confirmPurchase('${p.id}')">Lanjutkan</button>
+      <button class="sheet-btn" onclick="confirmPurchase('${p.id}')">Bayar</button>
     </div>
   `;
   document.getElementById('checkoutSheetContent').innerHTML = html;
@@ -799,10 +1085,16 @@ function showBudgetConfirmSheet(p){
 
 function confirmPurchase(productId){
   const p = PRODUCTS.find(x=>x.id===productId);
-  budgetRemaining[p.budgetLabel] = Math.max(0, budgetRemaining[p.budgetLabel]-p.price);
-  closeCheckoutModal();
-  renderBudgetStrip();
-  toast(`🎉 Pembelian "${p.name}" berhasil! Sisa ${cap(p.budgetLabel)}: Rp${fmt(budgetRemaining[p.budgetLabel])}`);
+  const html = `
+    <div class="handle"></div>
+    <h2>Pembayaran Terkunci</h2>
+    <p class="desc">${p.name}</p>
+    <div class="lock-notice">
+      🔒 Pengeluaran tidak bisa dilakukan karena jadwal pengeluaran terkunci. Hari ini tanggal 9 September, jadwal pengeluaran kantong ${cap(p.budgetLabel)} baru bisa dibuka tanggal 13 September.
+    </div>
+    <button class="sheet-btn" onclick="closeCheckoutModal()">Oke, Mengerti</button>
+  `;
+  document.getElementById('checkoutSheetContent').innerHTML = html;
 }
 
 function closeCheckoutModal(){
@@ -819,6 +1111,258 @@ function toast(msg){
   el.classList.add('show');
   clearTimeout(toastTimer);
   toastTimer = setTimeout(()=> el.classList.remove('show'), 3200);
+}
+
+/* ============ GENERAL HOMEPAGE CATALOG (always visible) ============ */
+const HOME_FASHION = [
+  {name:'Kemeja Flanel Kotak Unisex', price:65000, old:120000, keyword:'flannel-shirt', seed:'hf1'},
+  {name:'Jaket Bomber Varsity', price:135000, old:220000, keyword:'bomber-jacket', seed:'hf2'},
+  {name:'Kaos Oversize Katun', price:45000, old:80000, keyword:'tshirt', seed:'hf3'},
+  {name:'Rok Plisket Mahasiswi', price:58000, old:99000, keyword:'skirt', seed:'hf4'},
+  {name:'Celana Cargo Jogger', price:89000, old:150000, keyword:'cargo-pants', seed:'hf5'},
+  {name:'Sneakers Canvas Basic', price:99000, old:180000, keyword:'sneakers', seed:'hf6'},
+];
+const HOME_FACECARE = [
+  {name:'Serum Niacinamide 10%', price:35000, old:65000, keyword:'serum', seed:'hc1'},
+  {name:'Sunscreen SPF 40 Gel', price:42000, old:75000, keyword:'sunscreen', seed:'hc2'},
+  {name:'Facial Wash Oil Control', price:28000, old:45000, keyword:'facewash', seed:'hc3'},
+  {name:'Toner Centella Asiatica', price:39000, old:70000, keyword:'toner', seed:'hc4'},
+  {name:'Sheet Mask Aloe Vera', price:8000, old:15000, keyword:'sheetmask', seed:'hc5'},
+  {name:'Moisturizer Gel Cream', price:45000, old:80000, keyword:'moisturizer', seed:'hc6'},
+];
+function renderHomeCatalog(id, items){
+  const el = document.getElementById(id);
+  el.innerHTML = items.map(p=>{
+    const disc = Math.round((1-p.price/p.old)*100);
+    return `<div class="home-card">
+      <div class="imgwrap">
+        <img src="https://loremflickr.com/300/300/${p.keyword}?lock=${p.seed}" onerror="this.onerror=null;this.src='https://picsum.photos/seed/${p.seed}/300/300'">
+        <div class="disc-badge">-${disc}%</div>
+      </div>
+      <div class="info">
+        <div class="name">${p.name}</div>
+        <div class="price-now">Rp${fmt(p.price)}</div>
+        <div class="price-old">Rp${fmt(p.old)}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+renderHomeCatalog('homeFashion', HOME_FASHION);
+renderHomeCatalog('homeFacecare', HOME_FACECARE);
+
+/* ============ FREELANCER FLOW ============ */
+let flVerifying = false;
+let flVerified = false;
+
+function openFreelancerFlow(){
+  if(flVerified){
+    openFreelancerPage();
+    return;
+  }
+  document.getElementById('overlayFreelance').classList.add('open');
+}
+
+function doFreelanceVerify(){
+  if(flVerifying) return;
+  flVerifying = true;
+  const btn = document.getElementById('btnFlVerify');
+  const spinner = document.getElementById('flSpinner');
+  const label = document.getElementById('flVerifyLabel');
+  btn.setAttribute('disabled','true');
+  spinner.classList.add('show');
+  label.textContent = 'Memverifikasi data kamu...';
+
+  setTimeout(()=>{
+    label.textContent = 'Berhasil! Menyiapkan profil...';
+  }, 1300);
+
+  setTimeout(()=>{
+    flVerifying = false;
+    flVerified = true;
+    document.getElementById('overlayFreelance').classList.remove('open');
+    btn.removeAttribute('disabled');
+    spinner.classList.remove('show');
+    label.textContent = 'Mulai Verifikasi';
+    openFreelancerPage();
+    toast('💼 Akun Freelancer kamu aktif! Yuk mulai jualan.');
+  }, 2000);
+}
+
+function openFreelancerPage(){
+  document.getElementById('flPage').classList.add('open');
+  flSwitchTab('produk');
+}
+function closeFreelancerPage(){
+  document.getElementById('flPage').classList.remove('open');
+}
+
+/* ---- freelancer product data (barang bekas & jajanan mahasiswa) ---- */
+let FL_PRODUCTS = [
+  {id:'fp1', name:'Sepatu Sneakers Second – Ukuran 42', price:95000, cond:'Bekas - Sangat Baik', emoji:'👟'},
+  {id:'fp2', name:'Kemeja Flanel Second Layak Pakai', price:35000, cond:'Bekas - Baik', emoji:'👕'},
+  {id:'fp3', name:'Nasi Goreng Rumahan (1 Porsi)', price:15000, cond:'Baru', emoji:'🍛'},
+  {id:'fp4', name:'Kue Kering Homemade (Toples)', price:25000, cond:'Baru', emoji:'🍪'},
+  {id:'fp5', name:'Tas Ransel Second Kondisi Mulus', price:60000, cond:'Bekas - Sangat Baik', emoji:'🎒'},
+  {id:'fp6', name:'Buku Kuliah Bekas (Set 3pcs)', price:40000, cond:'Bekas - Baik', emoji:'📚'},
+];
+let flProdSeq = 7;
+
+const FL_ORDERS = [
+  {product:'Sepatu Sneakers Second – Ukuran 42', from:'Rani A.', status:'pending'},
+  {product:'Nasi Goreng Rumahan (1 Porsi)', from:'Bimo S.', status:'progress'},
+  {product:'Kemeja Flanel Second Layak Pakai', from:'Dewi K.', status:'review'},
+  {product:'Kue Kering Homemade (Toples)', from:'Farhan M.', status:'progress'},
+  {product:'Tas Ransel Second Kondisi Mulus', from:'Intan P.', status:'pending'},
+];
+
+const FL_HISTORY = [
+  {product:'Buku Kuliah Bekas (Set 3pcs)', buyer:'Yoga W.', date:'6 Agu 2026', stars:5},
+  {product:'Sepatu Sneakers Second – Ukuran 42', buyer:'Citra L.', date:'7 Sep 2026', stars:5},
+  {product:'Nasi Goreng Rumahan (1 Porsi)', buyer:'Andra P.', date:'8 Sep 2026', stars:4},
+  {product:'Kue Kering Homemade (Toples)', buyer:'Sarah A.', date:'3 Sep 2026', stars:5},
+];
+
+function flSwitchTab(tab){
+  ['produk','pesanan','riwayat','keuangan'].forEach(t=>{
+    document.getElementById('flTab'+cap(t)).classList.toggle('active', t===tab);
+  });
+  const body = document.getElementById('flBody');
+  if(tab==='produk') body.innerHTML = flRenderProduk();
+  if(tab==='pesanan') body.innerHTML = flRenderPesanan();
+  if(tab==='riwayat') body.innerHTML = flRenderRiwayat();
+  if(tab==='keuangan') body.innerHTML = flRenderKeuangan();
+  if(tab==='keuangan') flDrawCharts();
+}
+
+function flRenderProduk(){
+  return `
+    <div class="fl-add-btn" onclick="openAddProductModal()">+ Tambahkan Produk</div>
+    <div class="fl-grid" id="flProdGrid">
+      ${FL_PRODUCTS.map(p=>`
+        <div class="fl-pcard">
+          <div class="imgwrap">${p.emoji}</div>
+          <div class="info">
+            <div class="name">${p.name}</div>
+            <div class="price">Rp${fmt(p.price)}</div>
+            <div class="meta">🏷️ ${p.cond}</div>
+            <button class="edit-btn" onclick="toast('Fitur edit produk segera hadir')">✏️ Edit</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function flRenderPesanan(){
+  const statusMap = {
+    pending:{cls:'pending', label:'Belum Diterima'},
+    progress:{cls:'progress', label:'Dalam Proses'},
+    review:{cls:'review', label:'Belum Penilaian'},
+  };
+  return `
+    <div class="fl-notice">📦 ${FL_ORDERS.length} pesanan masuk perlu perhatian kamu.</div>
+    ${FL_ORDERS.map(o=>{
+      const s = statusMap[o.status];
+      return `<div class="fl-order-card">
+        <div class="top-row">
+          <div>
+            <h4>${o.product}</h4>
+            <div class="from">Dari: ${o.from}</div>
+          </div>
+          <div class="fl-status ${s.cls}">${s.label}</div>
+        </div>
+        <button class="fl-chat-btn" onclick="toast('Membuka chat dengan ${o.from}...')">💬 Chat Pemesan</button>
+      </div>`;
+    }).join('')}
+  `;
+}
+
+function flRenderRiwayat(){
+  return FL_HISTORY.map(h=>`
+    <div class="fl-hist-card">
+      <div>
+        <h4>${h.product}</h4>
+        <div class="buyer">${h.buyer} • ${h.date}</div>
+      </div>
+      <div class="stars">${'⭐'.repeat(h.stars)}</div>
+    </div>
+  `).join('');
+}
+
+function flRenderKeuangan(){
+  const pendapatan = FL_HISTORY.reduce((sum,h)=>{
+    const p = FL_PRODUCTS.find(x=>x.name===h.product);
+    return sum + (p ? p.price : 30000);
+  }, 0) + 185000;
+  const hpp = Math.round(pendapatan*0.42);
+  const ads = Math.round(pendapatan*0.10);
+  const bersih = pendapatan - hpp - ads;
+  return `
+    <div class="fl-fin-cards">
+      <div class="fl-fin-card"><div class="lbl">Pendapatan</div><div class="val" style="color:var(--green-dark)">Rp${fmt(pendapatan)}</div></div>
+      <div class="fl-fin-card"><div class="lbl">Laba Bersih</div><div class="val">Rp${fmt(bersih)}</div></div>
+    </div>
+    <div class="fl-chart-box">
+      <h4>Komposisi Pendapatan</h4>
+      <div class="fl-pie-row">
+        <div class="fl-pie" id="flPieChart"></div>
+        <div class="fl-legend">
+          <div class="li"><span class="dot" style="background:var(--green)"></span>Laba Bersih<b>Rp${fmt(bersih)}</b></div>
+          <div class="li"><span class="dot" style="background:#FFD166"></span>HPP (Modal)<b>Rp${fmt(hpp)}</b></div>
+          <div class="li"><span class="dot" style="background:var(--red)"></span>Iklan/Ads<b>Rp${fmt(ads)}</b></div>
+        </div>
+      </div>
+    </div>
+    <div class="fl-chart-box">
+      <h4>Pendapatan 6 Bulan Terakhir</h4>
+      <div class="fl-bars" id="flBarChart"></div>
+    </div>
+  `;
+}
+
+function flDrawCharts(){
+  const pieEl = document.getElementById('flPieChart');
+  if(pieEl){
+    // recompute same split for gradient
+    const bersihPct = 48, hppPct = 42, adsPct = 10;
+    pieEl.style.background = `conic-gradient(var(--green) 0% ${bersihPct}%, #FFD166 ${bersihPct}% ${bersihPct+hppPct}%, var(--red) ${bersihPct+hppPct}% 100%)`;
+  }
+  const barEl = document.getElementById('flBarChart');
+  if(barEl){
+    const data = [
+      {m:'Apr', v:55}, {m:'Mei', v:70}, {m:'Jun', v:62}, {m:'Jul', v:80}, {m:'Agu', v:95}, {m:'Sep', v:88},
+    ];
+    barEl.innerHTML = data.map(d=>`
+      <div class="fl-bar-col">
+        <div class="bar" style="height:${d.v}%"></div>
+        <div class="lbl">${d.m}</div>
+      </div>
+    `).join('');
+  }
+}
+
+function openAddProductModal(){
+  document.getElementById('overlayAddProduct').classList.add('open');
+}
+function submitNewProduct(){
+  const name = document.getElementById('fpName').value.trim();
+  const price = parseInt(document.getElementById('fpPrice').value, 10);
+  const cond = document.getElementById('fpCond').value;
+  if(!name || !price){
+    toast('Lengkapi nama & harga produk dulu ya');
+    return;
+  }
+  const emojis = ['🛍️','👕','👟','🍱','🎒','📚','🧴'];
+  FL_PRODUCTS.unshift({
+    id: 'fp'+(flProdSeq++),
+    name, price, cond,
+    emoji: emojis[Math.floor(Math.random()*emojis.length)],
+  });
+  document.getElementById('overlayAddProduct').classList.remove('open');
+  document.getElementById('fpName').value = '';
+  document.getElementById('fpPrice').value = '';
+  document.getElementById('flBody').innerHTML = flRenderProduk();
+  toast(`✅ Produk "${name}" berhasil ditambahkan!`);
 }
 </script>
 </body>
